@@ -22,7 +22,7 @@ if (benchmark_array - parts_array).empty?
 # => true
     print "All good, the headers are the same"
 else 
-    warn "Oh shit, there are some headers missing"
+    warn "Oh no, there are some headers missing"
 end
 
 
