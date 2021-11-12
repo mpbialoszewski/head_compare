@@ -1,12 +1,17 @@
 require 'CSV'
 
+# TODO - enable running the program by passing arguments in CMD ('ruby header_compare.rb benchmark_file #{location_of_file}')
+# TODO - convert whole program to OOP 
+
+
+# TODO - refactoring the names of variables 
+
 #Benchmark file reading 
 benchmark_file = CSV.read('benchmark.csv',headers: true).headers.to_s
 benchmark_file_split = benchmark_file.tr('"', '').gsub!(', ', "\n")
 benchmark_to_parts = benchmark_file_split.split
 benchmark_array = Array.new
 benchmark_array.push(benchmark_to_parts)
-
 
 #Compared file reading 
 compared_file = CSV.read("file1.csv", headers: true).headers.to_s
@@ -16,28 +21,17 @@ parts_array = Array.new
 parts_array.push(compared_to_parts)
 
 
-#Comparing files be deducting arrays from themselves
+#Comparing files by deducting arrays from themselves
 if (benchmark_array - parts_array).empty?
 #     (arr1 - arr2).empty? 
 # => true
     print "All good, the headers are the same"
 else 
+# TODO - point which elements of array are missing 
     warn "Oh no, there are some headers missing"
 end
 
-
-# TODO - point which elements of array are missing 
-# TODO - enable to pass two arguments when running (OOP) 
-
-
-#Debugging with print lol
-
-puts benchmark_file.class
-puts compared_file.class
-puts compared_file_split.class
-puts compared_to_parts.class
-puts benchmark_to_parts.class
-
+# TODO - send sample email with error message to me
 
 
 
