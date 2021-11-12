@@ -32,22 +32,10 @@ end
 
 #Debugging with print lol
 
-print benchmark_file.class
-print "\n"
-print '-----_VERSUS-------'
-print "\n"
-print compared_file.class
-print "\n"
-print '-----SPLIT---------'
-print "\n"
-print compared_file_split.class
-print "\n"
-print '-----Array ?-------'
-print "\n"
+puts benchmark_file.class
+puts compared_file.class
+puts compared_file_split.class
 puts compared_to_parts.class
-print "\n"
-print '-----Array ?-------'
-print "\n"
 puts benchmark_to_parts.class
 
 
