@@ -8,17 +8,15 @@ require 'CSV'
 
 #Benchmark file reading 
 benchmark_file = CSV.read('benchmark.csv',headers: true).headers.to_s
-benchmark_file_split = benchmark_file.tr('"', '').gsub!(', ', "\n")
-benchmark_to_parts = benchmark_file_split.split
+benchmark_file_split = (benchmark_file.tr('"', '').gsub!(', ', "\n")).split
 benchmark_array = Array.new
-benchmark_array.push(benchmark_to_parts)
+benchmark_array.push(benchmark_file_split)
 
 #Compared file reading 
 compared_file = CSV.read("file1.csv", headers: true).headers.to_s
-compared_file_split = compared_file.tr('"', '').gsub!(', ', "\n")
-compared_to_parts = compared_file_split.split
+compared_file_split = (compared_file.tr('"', '').gsub!(', ', "\n")).split
 parts_array = Array.new
-parts_array.push(compared_to_parts)
+parts_array.push(compared_file_split)
 
 
 #Comparing files by deducting arrays from themselves
