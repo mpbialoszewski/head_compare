@@ -1,17 +1,24 @@
 require 'CSV'
-require 'mail'
 
 # TODO- enable running the program by passing arguments in CMD ('ruby header_compare.rb benchmark_file #{location_of_file}')
 
-# TODO - convert whole program to OOP 
+benchmark= ARGV[0]
+compare = ARGV[1]
 
+=begin
+ruby header_compare.rb benchmark.csv file1.csv 
+42
+39  
+=end
+  
+# TODO - convert whole program to OOP 
 #Benchmark file reading 
-        benchmark_file = CSV.read('benchmark.csv',headers: true).headers.to_s
+        benchmark_file = CSV.read(benchmark,headers: true).headers.to_s
         benchmark_array = (benchmark_file.tr('"', '').gsub!(', ', "\n")).split
         puts benchmark_array.length
 
 #Compared file reading 
-        compared_file = CSV.read("file1.csv", headers: true).headers.to_s
+        compared_file = CSV.read(compare, headers: true).headers.to_s
         compared_array = (compared_file.tr('"', '').gsub!(', ', "\n")).split
         puts compared_array.length
 
