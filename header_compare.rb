@@ -1,35 +1,39 @@
 require 'CSV'
 
-# TODO - enable running the program by passing arguments in CMD ('ruby header_compare.rb benchmark_file #{location_of_file}')
+# TODO- enable running the program by passing arguments in CMD ('ruby header_compare.rb benchmark_file #{location_of_file}')
 # TODO - convert whole program to OOP 
-
-
 # TODO - refactoring the names of variables 
 
 #Benchmark file reading 
-benchmark_file = CSV.read('benchmark.csv',headers: true).headers.to_s
-benchmark_file_split = (benchmark_file.tr('"', '').gsub!(', ', "\n")).split
-benchmark_array = Array.new
-benchmark_array.push(benchmark_file_split)
+        benchmark_file = CSV.read('benchmark.csv',headers: true).headers.to_s
+        benchmark_file_split = (benchmark_file.tr('"', '').gsub!(', ', " ")).split
+        benchmark_array = Array.new
+        benchmark_array.push(benchmark_file_split)
 
 #Compared file reading 
-compared_file = CSV.read("file1.csv", headers: true).headers.to_s
-compared_file_split = (compared_file.tr('"', '').gsub!(', ', "\n")).split
-parts_array = Array.new
-parts_array.push(compared_file_split)
+        compared_file = CSV.read("file1.csv", headers: true).headers.to_s
+        compared_file_split = (compared_file.tr('"', '').gsub!(', ', " ")).split
+        parts_array = Array.new
+        parts_array.push(compared_file_split)
 
-
-#Comparing files by deducting arrays from themselves
-if (benchmark_array - parts_array).empty?
-#     (arr1 - arr2).empty? 
-# => true
-    print "All good, the headers are the same"
-else 
-# TODO - point which elements of array are missing 
-    warn "Oh no, there are some headers missing"
-end
-
+    if (benchmark_array - parts_array).empty?
+        print "All good, the headers are the same"
+    else 
+    # TODO - point which elements of array are missing 
+        warn "Oh no, there are some headers missing"
+        warn"Expected number of headers: #{benchmark_file_split.length}, compared headers number: #{compared_file_split.length} "
+        warn "Missing elements of compared header #{benchmark_file_split - compared_file_split}"
+    end
 # TODO - send sample email with error message to me
+
+
+
+# raise ArgumentError, "Oh no, there are some headers missing"
+# rescue => e
+#   puts "Expected number of headers: #{e.benchmark_file_split.length}, compared headers number: #{e.compared_file_split.length} "
+#   warn "Missing elements of compared header #{benchmark_file_split - compared_file_split}"
+# end
+
 
 
 
